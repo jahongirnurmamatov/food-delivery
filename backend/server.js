@@ -12,7 +12,7 @@ connectDB();
 
 //api endpoint
 app.use('/api/food',foodRouter);
-
+app.use('/images',express.static('uploads'))
 
 //middleware
 app.use(express.json());
