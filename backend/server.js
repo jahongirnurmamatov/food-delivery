@@ -9,14 +9,15 @@ const port =4000;
 
 //connecting db
 connectDB();
+//middleware
+app.use(express.json());
+app.use(cors());
+
 
 //api endpoint
 app.use('/api/food',foodRouter);
 app.use('/images',express.static('uploads'))
 
-//middleware
-app.use(express.json());
-app.use(cors());
 
 app.get('/',(req,res)=>{
     res.send('API working')
