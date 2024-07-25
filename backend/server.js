@@ -20,16 +20,7 @@ app.use('/api/food',foodRouter);
 app.use('/api/user',userRouter);
 app.use('/images',express.static('uploads'))
 
-//error handling middleware
-app.use((err,req,res,next) =>{
-    const statusCode = err.statusCode||500;
-    const message = err.message||'Internal Server Error';
-    return res.status(statusCode).json({
-        success:false,
-        statusCode,
-        message,
-    })
-})
+
 app.listen(port,()=>{
     console.log(`Server is running on ${port}`)
 })

@@ -5,7 +5,7 @@ import {assets} from '../../assets/assets'
 import { StoreContext } from '../../ context/StoreContext';
 export default function Navbar({setShowLogin}) {
     const [menu, setMenu]=useState('home');
-    const {getTotalCartAmount} = useContext(StoreContext)
+    const {getTotalCartAmount,token,setToken} = useContext(StoreContext)
 
   return (
     <div className='navbar'>
@@ -22,7 +22,13 @@ export default function Navbar({setShowLogin}) {
                 <Link to={'/cart'}><img src={assets.basket_icon} alt="" /></Link>
                 <div className={getTotalCartAmount()===0 ? "" : "dot"}></div>
             </div>
-            <button onClick={()=>setShowLogin(true)}>sign in</button>
+            {!token ? <button onClick={()=>setShowLogin(true)}>sign in</button>:
+            <div className='navbar-profile'>
+                <img src={assets.profile_icon} alt="" />
+                <ul className='nav-profile'></ul>
+            </div>
+            }
+            
         </div>
     </div>
   )

@@ -6,6 +6,9 @@ import Cart from './pages/Cart/Cart'
 import PlaceOrder from './pages/PlaceOrder/PlaceOrder'
 import Footer from './components/footer/Footer'
 import LoginPop from './components/loginPopUp/LoginPop'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 export default function App() {
   const [showLogin, setShowLogin] = useState(false);
 
@@ -14,6 +17,7 @@ export default function App() {
     {showLogin ? <LoginPop setShowLogin={setShowLogin} /> : <></>}
       <div className='app'>
         <Navbar setShowLogin={setShowLogin}/>
+        <ToastContainer />
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/cart' element={<Cart />} />
