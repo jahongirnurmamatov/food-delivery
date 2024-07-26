@@ -28,5 +28,3 @@ app.use('/images',express.static('uploads'))
 app.listen(port,()=>{
     console.log(`Server is running on ${port}`)
 })
-
-//mongodb+srv://jahongiirnurmamatov:md3HdllpfnW1nxFL@cluster0.ctbydrk.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
