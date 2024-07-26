@@ -8,6 +8,7 @@ import Footer from './components/footer/Footer'
 import LoginPop from './components/loginPopUp/LoginPop'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Verify from './pages/Verify/Verify'
 
 export default function App() {
   const [showLogin, setShowLogin] = useState(false);
@@ -22,6 +23,7 @@ export default function App() {
           <Route path='/' element={<Home />} />
           <Route path='/cart' element={<Cart />} />
           <Route path='/order' element={<PlaceOrder />} />
+          <Route path='/verify' element={<Verify />} />
         </Routes>
       </div>
       <Footer />
