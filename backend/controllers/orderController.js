@@ -71,3 +71,12 @@ export const userOrders = async(req,res)=>{
         res.json({success:false, message:"Error"})
     }
 }
+
+export const listOrders =async(req,res)=>{
+    try {
+        const orders = await Order.find({});
+        res.json({success:true, data:orders});
+    } catch (error) {
+        res.json({success:false,message:"Error in fetching orders"});
+    }
+}
