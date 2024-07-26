@@ -9,7 +9,6 @@ export const addToCart = async (req, res) => {
         } else {
             cartData[req.body.itemId] += 1;
         }
-        console.log(cartData[req.body.itemId])
         await User.findByIdAndUpdate(req.body.userId, { cart: cartData });
         res.json({ success: true, message: "Added to cart" });
     } catch (error) {
@@ -19,7 +18,6 @@ export const addToCart = async (req, res) => {
 
 export const removeFromCart = async (req, res) => {
     try {
-        console.log(req.body.userId)
         let user = await User.findById({ _id: req.body.userId });
         let cartData = await user.cart;
         if (cartData[req.body.itemId] > 0) {
