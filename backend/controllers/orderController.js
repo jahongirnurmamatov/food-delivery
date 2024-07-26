@@ -21,7 +21,7 @@ export const placeOrder = async (req, res) => {
                 product_data: {
                     name: item.name
                 },
-                unit_amount: item.price
+                unit_amount: item.price*100
             },
             quantity: item.quantity
         }));
@@ -31,19 +31,23 @@ export const placeOrder = async (req, res) => {
                 product_data:{
                     name:"Delivery Charges"
                 },
-                unit_amount:2
+                unit_amount:2*100
             },
             quantity:1
         });
+       
         const session = await stripe.checkout.sessions.create({
-            line_items:line_items,
-            mode:'payment',
-            success_url:`${frontend_url}/verify?success=true&orderId=${newOrder._id}`,
-            cancel_url:`${frontend_url}/verify?success=false&orderId=${newOrder._id}`,
+            line_items: line_items,
+            mode: 'payment',
+            success_url: `${frontend_url}/verify?success=true&orderId=${newOrder._id}`,
+            cancel_url: `${frontend_url}/verify?success=false&orderId=${newOrder._id}`,
         });
         res.json({success:true,session_url:session.url});
     } catch (error) {
         res.json({success:false,message:error});
     }
+}
 
+export const verifyOrder = async(req,res)=>{
+    
 }
