@@ -1,0 +1,26 @@
+import User from '../models/userModel.js';
+
+export const addToCart = async(req,res)=>{
+    try {
+        let user=await User.findOne({_id:req.body.userId});
+        let cartData = await user.cart;
+        if(!cartData[req.body.itemId]){
+            cartData[req.body.itemId] =1;
+        }else{
+            cartData[req.body.itemId]+=1;
+        }
+        console.log(cartData[req.body.itemId])
+        await User.findByIdAndUpdate(req.body.userId,{cart:cartData});
+        res.json({success:true, message:"Added to cart"});
+    } catch (error) {
+        res.json({success:false,message:error});
+    }
+}
+
+export const removeFromCart = async(req,res)=>{
+
+}
+
+export const getCart = async(req,res)=>{
+
+}
