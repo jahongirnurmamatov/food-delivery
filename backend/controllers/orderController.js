@@ -80,3 +80,13 @@ export const listOrders =async(req,res)=>{
         res.json({success:false,message:"Error in fetching orders"});
     }
 }
+
+//api update order status 
+export const updateStatus =async(req,res)=>{
+    try {
+        await Order.findByIdAndUpdate(req.body.orderId,{status:req.body.status});
+        res.json({success:true,message:"Status updated!"});
+    } catch (error) {
+        res.json({success:false,message:"Error in updating status."});
+    }
+}
